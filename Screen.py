@@ -1,5 +1,6 @@
 import pygame
 import Consts
+import random
 
 screen = pygame.display.set_mode(
     (Consts.WINDOW_WIDTH, Consts.WINDOW_HEIGHT))
@@ -7,12 +8,24 @@ screen = pygame.display.set_mode(
 
 def draw_field():
 
+    # grass = create_grass()
+    # for i in range(Consts.GRASS_NUM):
+    #     x = random.randint(Consts.FIELD_COLS)
+    #     y = random.randint(Consts.FIELD_ROWS)
+    #     screen.blit(grass, x, y)
+    soldier = create_solider()
+    soldier_rect = soldier.get_rect(
+        center=(Consts.SOLIDER_MIDBOTTOM_X,Consts.SOLIDER_MIDBOTTOM_Y))
+    screen.blit(soldier,soldier_rect)
+    flag = create_flag()
+    screen.blit(flag, 0, 0)
     draw_start_message()
-    pass
+
 
 
 def draw_night_field():
     pass
+
 
 def create_solider():
     solider = pygame.image.load(Consts.SOLDIER_IMG)
@@ -20,21 +33,34 @@ def create_solider():
         Consts.SOLDIER_WIDTH, Consts.SOLDIER_HEIGHT))
     return sized_solider
 
+
 def create_night_solider():
     night_solider = pygame.image.load(Consts.SOLDIER_NIGHT_IMG)
     sized_night_solider = pygame.transform.scale(night_solider, (
         Consts.SOLDIER_WIDTH, Consts.SOLDIER_HEIGHT))
     return sized_night_solider
+
+
 def create_flag():
     flag = pygame.image.load(Consts.FLAG_IMG)
     sized_flag = pygame.transform.scale(flag, (
         Consts.FLAG_WIDTH, Consts.FLAG_HEIGHT))
     return sized_flag
+
+
 def create_mine():
     mine = pygame.image.load(Consts.MINE_IMG)
     sized_mine = pygame.transform.scale(mine, (
         Consts.MINE_WIDTH, Consts.MINE_HEIGHT))
     return sized_mine
+
+
+def create_grass():
+    grass = pygame.image.load(Consts.GRASS_IMG)
+    sized_grass = pygame.transform.scale(grass, (
+        Consts.GRASS_WIDTH, Consts.GRASS_HEIGHT))
+    return sized_grass
+
 
 def draw_message(message, font_size, color, location):
     font = pygame.font.SysFont(Consts.FONT_NAME, font_size)

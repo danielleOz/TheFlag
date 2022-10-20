@@ -1,5 +1,6 @@
 import pygame
 import MineField
+import Screen
 
 import Consts
 
@@ -15,7 +16,7 @@ def main():
 
     MineField.create()
 
-    while state["is_open"]:
+    while state["screen_open"]:
 
         handle_user_events()
 
@@ -24,6 +25,9 @@ def main():
 
         if state["is_enter"]:
             pass
+
+        Screen.draw_game(state)
+
 
 
 def handle_user_events():
