@@ -12,6 +12,7 @@ state = {
 
 
 def main():
+
     MineField.create()
 
     while state["is_open"]:
