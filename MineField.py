@@ -32,8 +32,8 @@ def create():
     global mine_field
     mine_field = [[Consts.EMPTY for i in range(Consts.FIELD_COLS)] for j in range(Consts.FIELD_ROWS)]
     mine_field[0][0] = Consts.SOLDIER
-    for row in range(21, 23):
-        for col in range(46, 49):
+    for row in range(21, 24):
+        for col in range(46, 50):
             mine_field[row][col] = Consts.FLAG
     add_mines()
 
