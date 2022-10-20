@@ -1,31 +1,43 @@
 import Consts
 import random
 
+mine_field = []
 
-def is_flag_or_soldier():
+
+def is_empty(row, col):
+    if mine_field[row][col] == Consts.EMPTY:
+        return True
     return False
 
 
 def random_mine():
+    mine_location = []
     for i in range(Consts.MINE_NUM):
         row = random.randint(0, Consts.FIELD_ROWS)
         col = random.randint(0, Consts.FIELD_COLS)
-        if not is_flag_or_soldier():
+        if is_empty(row, col):
             mine_location.append([row, col])
         else:
             i -= 1
+    return mine_location
 
 
-mine_field = []
-mine_location = []
-random_mine()
-print(mine_location)
+
 
 
 def create():
     global mine_field
     mine_field = [[Consts.EMPTY for i in range(Consts.FIELD_ROWS)] for j in range(Consts.FIELD_COLS)]
-    pass
+    mine_field[0][0] = Consts.SOLDIER
+    for row in range(21, 23):
+        for col in range(46, 49):
+            mine_field[row][col] = Consts.FLAG
+    add_mines()
+
+
+def add_mines():
+    for mine in random_mine():
+        mine_field[mine[0]][mine[1]]
 
 
 def move_soldier():

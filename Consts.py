@@ -1,5 +1,5 @@
 import random
-
+import MineField
 
 FIELD_ROWS = 25
 FIELD_COLS = 50
@@ -41,7 +41,6 @@ SOLDIER_Y = WINDOW_HEIGHT * 0.8
 
 SOLDIER_NIGHT_IMG = "soldier_nigth.png"
 
-
 GRASS_IMG = "grass.png"
 GRASS_HEIGHT = 4
 GRASS_WIDTH = 4
@@ -64,17 +63,5 @@ RUNNING_STATE = 1
 LOSE_STATE = 2
 WIN_STATE = 3
 
-MINE_LOCATION = []
-
-def is_flag_or_soldier():
-    return False
 
 
-def random_mine():
-    for i in range(MINE_NUM):
-        row = random.randint(0, FIELD_ROWS)
-        col = random.randint(0, FIELD_COLS)
-        if not is_flag_or_soldier():
-            MINE_LOCATION.append([row, col])
-        else:
-            i -= 1
