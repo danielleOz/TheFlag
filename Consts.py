@@ -1,5 +1,6 @@
 import random
 
+
 FIELD_ROWS = 25
 FIELD_COLS = 50
 GREEN = (85, 107, 47)
