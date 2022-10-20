@@ -8,6 +8,7 @@ screen = pygame.display.set_mode(
 
 def draw_field():
 
+
     # grass = create_grass()
     # for i in range(Consts.GRASS_NUM):
     #     x = random.randint(Consts.FIELD_COLS)
