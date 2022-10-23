@@ -5,7 +5,7 @@ mine_field = []
 
 
 def is_empty(row, col):
-    for r in range(8):  # מקום של חייל שלא נמצא במטריצה
+    for r in range(4):  # מקום של חייל שלא נמצא במטריצה
         for c in range(2):
             if row == r and col == c:
                 return False
@@ -43,8 +43,19 @@ def add_mines():
         mine_field[mine[0]][mine[1]] = Consts.MINE
 
 
-def move_soldier():
-    pass
+def move_soldier(movement):
+    soldier_place = find_soldier()
+    row = soldier_place[0]
+    col = soldier_place[1]
+    mine_field[row][col] = Consts.EMPTY
+    if movement == Consts.DOWN:
+        mine_field[row + 1][col] = Consts.EMPTY
+    if movement == Consts.UP:
+        pass
+    if movement == Consts.LEFT:
+        pass
+    if movement == Consts.RIGHT:
+        pass
 
 
 def find_soldier():
