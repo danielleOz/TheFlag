@@ -34,14 +34,19 @@ def handle_user_events():
         if event.type == pygame.QUIT:
             state['scree_open'] = False
         if event.type == pygame.KEYDOWN:
-            if event.key == pygame.K_w:
-                print("Move the character forwards")
-            elif event.key == pygame.K_s:
-                print("Move the character backwards")
-            elif event.key == pygame.K_a:
-                print("Move the character left")
-            elif event.key == pygame.K_d:
-                print("Move the character right")
+            if event.key == pygame.K_UP:
+                MineField.move_soldier(Consts.UP)
+            if event.key == pygame.K_DOWN:
+                MineField.move_soldier(Consts.DOWN)
+            if event.key == pygame.K_LEFT:
+                MineField.move_soldier(Consts.LEFT)
+            if event.key == pygame.K_RIGHT:
+                MineField.move_soldier(Consts.RIGHT)
+            if event.key == pygame.K_KP_ENTER:
+                state['is_enter'] = True
+
+        Screen.draw_game(state)
+
 
 
 if __name__ == '__main__':
