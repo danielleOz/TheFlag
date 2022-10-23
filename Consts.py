@@ -69,6 +69,21 @@ LEFT = 'LEFT'
 RIGHT = 'RIGHT'
 
 
+def random_mine():
+    mine_location = []
+    for i in range(MINE_NUM):
+        row = random.randrange(FIELD_ROWS)
+        col = random.randrange(FIELD_COLS)
+        if MineField.is_empty(row, col):
+            mine_location.append([row, col])
+        else:
+            i -= 1
+    return mine_location
+
+
+MINE_LOCATION = random_mine()
+
+
 def grass_loc():
     grass_locations = []
     for i in range(GRASS_NUM):
