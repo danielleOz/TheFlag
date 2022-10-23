@@ -127,10 +127,10 @@ def draw_game(game_state):
     if game_state["is_enter"]:
         draw_night_field(game_state)
 
-    elif game_state["state"] == Consts.LOSE_STATE:
+    if game_state["state"] == Consts.LOSE_STATE:
         draw_lose_message()
 
-    elif game_state["state"] == Consts.WIN_STATE:
+    if game_state["state"] == Consts.WIN_STATE:
         draw_win_message()
 
     pygame.display.flip()
