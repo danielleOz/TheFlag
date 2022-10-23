@@ -7,10 +7,10 @@ screen = pygame.display.set_mode(
     (Consts.WINDOW_WIDTH, Consts.WINDOW_HEIGHT))
 
 
-def draw_field():
+def draw_field(game_state):
     draw_grass()
     soldier = create_solider()
-    soldier_loc = Soldier.find_soldier()
+    soldier_loc = MineField.find_soldier()
     screen.blit(soldier, (
         soldier_loc[1] * Consts.SQUARE_SIZE,
         soldier_loc[0] * Consts.SQUARE_SIZE))
@@ -122,14 +122,14 @@ def draw_game(game_state):
     # draw_night_field()
 
     if not game_state["is_enter"]:
-        draw_field()
+        draw_field(game_state)
     if game_state["is_enter"]:
         draw_night_field(game_state)
 
-    if game_state["state"] == Consts.LOSE_STATE:
+    elif game_state["state"] == Consts.LOSE_STATE:
         draw_lose_message()
 
-    if game_state["state"] == Consts.WIN_STATE:
+    elif game_state["state"] == Consts.WIN_STATE:
         draw_win_message()
 
     pygame.display.flip()
