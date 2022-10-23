@@ -58,9 +58,13 @@ def count_mines():
 def find_mines():
     mine_location = []
     for row in range(Consts.FIELD_ROWS):
-        for col in range(Consts.FIELD_COLS):
+        col = 0
+        while col < Consts.FIELD_COLS:
             if mine_field[row][col] == Consts.MINE:
                 mine_location.append([row, col])
+                col += 3
+            else:
+                col += 1
     return mine_location
 
 
