@@ -49,6 +49,5 @@ def handle_user_events():
         Screen.draw_game(state)
 
 
-
 if __name__ == '__main__':
     main()
