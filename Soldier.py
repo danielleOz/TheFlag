@@ -4,7 +4,7 @@ import main
 
 soldier_field = [[Consts.EMPTY for i in range(Consts.FIELD_COLS)] for j in
                  range(Consts.FIELD_ROWS)]
-mine_field[0][0] = Consts.SOLDIER
+soldier_field[0][0] = Consts.SOLDIER
 
 
 def find_soldier():

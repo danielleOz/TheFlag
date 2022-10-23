@@ -2,6 +2,7 @@ import pygame
 import MineField
 import Screen
 import Consts
+import Soldier
 
 state = {
     "screen_open": True,
@@ -38,6 +39,7 @@ def handle_user_events():
     for event in pygame.event.get():
         if event.type == pygame.QUIT:
             state['scree_open'] = False
+            pygame.quit()
 
         elif state["state"] != Consts.RUNNING_STATE:
             continue
@@ -46,19 +48,19 @@ def handle_user_events():
             if event.key == pygame.K_KP_ENTER:
                 state['is_enter'] = True
             if event.key == pygame.K_UP:
-                MineField.move_soldier(Consts.UP)
+                Soldier.move_soldier(Consts.UP)
             if event.key == pygame.K_DOWN:
-                MineField.move_soldier(Consts.DOWN)
+                Soldier.move_soldier(Consts.DOWN)
             if event.key == pygame.K_LEFT:
-                MineField.move_soldier(Consts.LEFT)
+                Soldier.move_soldier(Consts.LEFT)
             if event.key == pygame.K_RIGHT:
-                MineField.move_soldier(Consts.RIGHT)
+                Soldier.move_soldier(Consts.RIGHT)
 
         Screen.draw_game(state)
 
 
 def is_lose():  # אם רגלי החייל נוגעות במקש
-    soldier_sqr = MineField.find_soldier()
+    soldier_sqr = Soldier.find_soldier()
     row = soldier_sqr[0]
     col = soldier_sqr[1]
     for c in range(1):
@@ -67,7 +69,7 @@ def is_lose():  # אם רגלי החייל נוגעות במקש
 
 
 def is_win():  # אם החייל נוגע בדגל
-    soldier_sqr = MineField.find_soldier()
+    soldier_sqr = Soldier.find_soldier()
     row = soldier_sqr[0]
     col = soldier_sqr[1]
     for r in range(4):
