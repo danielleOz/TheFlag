@@ -28,9 +28,13 @@ def random_mine():
     return mine_location
 
 
+MINE_LOCATION = random_mine()
+
+
 def create():
     global mine_field
-    mine_field = [[Consts.EMPTY for i in range(Consts.FIELD_COLS)] for j in range(Consts.FIELD_ROWS)]
+    mine_field = [[Consts.EMPTY for i in range(Consts.FIELD_COLS)] for j in
+                  range(Consts.FIELD_ROWS)]
     mine_field[0][0] = Consts.SOLDIER
     for row in range(21, 24):
         for col in range(46, 50):
@@ -39,7 +43,7 @@ def create():
 
 
 def add_mines():
-    for mine in random_mine():
+    for mine in MINE_LOCATION():
         mine_field[mine[0]][mine[1]] = Consts.MINE
 
 
