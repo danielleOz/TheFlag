@@ -68,15 +68,18 @@ def move_soldier(movement):
     soldier_place = find_soldier()
     row = soldier_place[0]
     col = soldier_place[1]
-    mine_field[row][col] = Consts.EMPTY
     if movement == Consts.DOWN and row + 1 < Consts.FIELD_ROWS:
         mine_field[row + 1][col] = Consts.SOLDIER
+        mine_field[row][col] = Consts.EMPTY
     if movement == Consts.UP and row - 1 > -1:
         mine_field[row - 1][col] = Consts.SOLDIER
+        mine_field[row][col] = Consts.EMPTY
     if movement == Consts.LEFT and col - 1 > -1:
         mine_field[row][col - 1] = Consts.SOLDIER
+        mine_field[row][col] = Consts.EMPTY
     if movement == Consts.RIGHT and col + 1 < Consts.FIELD_COLS:
         mine_field[row][col + 1] = Consts.SOLDIER
+        mine_field[row][col] = Consts.EMPTY
 
 
 def find_soldier():
