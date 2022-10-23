@@ -25,17 +25,16 @@ def draw_field():
 def draw_night_field(game_state):
     screen.fill(Consts.BLACK)
     draw_grid()
-    soldier = create_night_solider()
-    soldier_loc = MineField.find_soldier()
-    screen.blit(soldier, (
-        soldier_loc[1] * Consts.SQUARE_SIZE,
-        soldier_loc[0] * Consts.SQUARE_SIZE))
     mine_loc = MineField.find_mines()
     mine = create_mine()
     for i in mine_loc:
         screen.blit(mine,
                     (i[1] * Consts.SQUARE_SIZE, i[0] * Consts.SQUARE_SIZE))
-
+    soldier = create_night_solider()
+    soldier_loc = Soldier.find_soldier()
+    screen.blit(soldier, (
+        soldier_loc[1] * Consts.SQUARE_SIZE,
+        soldier_loc[0] * Consts.SQUARE_SIZE))
     pygame.display.flip()
     pygame.time.wait(1000)
     game_state["is_enter"] = False
