@@ -8,18 +8,15 @@ screen = pygame.display.set_mode(
 
 def draw_field():
     grass = create_grass()
-    for i in range(Consts.GRASS_NUM):
-        x = random.randint(0,Consts.FIELD_COLS)
-        y = random.randint(0,Consts.FIELD_ROWS)
-        grass_rect = grass.get_rect(
-            center=(x, y))
-        screen.blit(grass, grass_rect)
-
+    loc = Consts.GRASS_LOCATIONS
+    for i in loc:
+        screen.blit(grass,(i[0]*Consts.SQUARE_SIZE,i[1]*Consts.SQUARE_SIZE))
     soldier = create_solider()
-    screen.blit(soldier, (0,0))
+    screen.blit(soldier, (0, 0))
     flag = create_flag()
-    screen.blit(flag, (Consts.FLAG_X,Consts.FLAG_Y))
-    # draw_start_message()
+    screen.blit(flag, (Consts.WINDOW_WIDTH - Consts.FLAG_WIDTH, Consts.WINDOW_HEIGHT - Consts.FLAG_HEIGHT))
+    pygame.display.update()
+    draw_start_message()
 
 
 def draw_night_field():

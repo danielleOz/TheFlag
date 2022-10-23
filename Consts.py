@@ -34,20 +34,18 @@ TEXT_FONT_SIZE = 20
 TEXT_LOCATION = (10, WINDOW_HEIGHT - TEXT_FONT_SIZE - 10)
 
 SOLDIER_IMG = "soldier.png"
-SOLDIER_HEIGHT = 8 * SQUARE_SIZE
+SOLDIER_HEIGHT = 4 * SQUARE_SIZE
 SOLDIER_WIDTH = 2 * SQUARE_SIZE
 SOLDIER_X = WINDOW_WIDTH / 2 - (SOLDIER_WIDTH / 2)
 SOLDIER_Y = WINDOW_HEIGHT * 0.8
 
-
 SOLDIER_NIGHT_IMG = "soldier_nigth.png"
 
 GRASS_IMG = "grass.png"
-GRASS_HEIGHT = 4
-GRASS_WIDTH = 4
+GRASS_HEIGHT = 2.5 * SQUARE_SIZE
+GRASS_WIDTH = 2.5 * SQUARE_SIZE
 GRASS_X = WINDOW_WIDTH / 2 - (GRASS_WIDTH / 2)
 GRASS_Y = WINDOW_HEIGHT * 0.8
-
 
 FLAG_IMG = "flag.png"
 FLAG_HEIGHT = 3 * SQUARE_SIZE
@@ -55,13 +53,11 @@ FLAG_WIDTH = 4 * SQUARE_SIZE
 FLAG_X = WINDOW_WIDTH / 2 - (FLAG_WIDTH / 2)
 FLAG_Y = WINDOW_HEIGHT * 0.8
 
-
 MINE_IMG = "mine.png"
 MINE_HEIGHT = 3 * SQUARE_SIZE
 MINE_WIDTH = SQUARE_SIZE
 MINE_X = WINDOW_WIDTH / 2 - (MINE_WIDTH / 2)
 MINE_Y = WINDOW_HEIGHT * 0.8
-
 
 RUNNING_STATE = 1
 LOSE_STATE = 2
@@ -73,4 +69,14 @@ LEFT = 'LEFT'
 RIGHT = 'RIGHT'
 
 
+def grass_loc():
+    grass_locations = []
+    for i in range(GRASS_NUM):
+        x = random.randint(0, FIELD_COLS)
+        y = random.randint(0, FIELD_ROWS)
+        loc = (x, y)
+        grass_locations.append(loc)
+    return grass_locations
 
+
+GRASS_LOCATIONS = grass_loc()
