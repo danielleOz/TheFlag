@@ -7,7 +7,7 @@ screen = pygame.display.set_mode(
     (Consts.WINDOW_WIDTH, Consts.WINDOW_HEIGHT))
 
 
-def draw_field(game_state):
+def draw_field():
     draw_grass()
     soldier = create_solider()
     soldier_loc = MineField.find_soldier()
@@ -123,7 +123,7 @@ def draw_game(game_state):
     # draw_night_field()
 
     if not game_state["is_enter"]:
-        draw_field(game_state)
+        draw_field()
     if game_state["is_enter"]:
         draw_night_field(game_state)
 

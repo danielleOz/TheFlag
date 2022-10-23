@@ -37,14 +37,13 @@ def handle_user_events():
         if event.type == pygame.KEYDOWN:
             if event.key == pygame.K_KP_ENTER:
                 state['is_enter'] = True
-            else:
-                if event.key == pygame.K_UP:
+            if event.key == pygame.K_UP:
                     MineField.move_soldier(Consts.UP)
-                if event.key == pygame.K_DOWN:
+            if event.key == pygame.K_DOWN:
                     MineField.move_soldier(Consts.DOWN)
-                if event.key == pygame.K_LEFT:
+            if event.key == pygame.K_LEFT:
                     MineField.move_soldier(Consts.LEFT)
-                if event.key == pygame.K_RIGHT:
+            if event.key == pygame.K_RIGHT:
                     MineField.move_soldier(Consts.RIGHT)
 
         Screen.draw_game(state)
