@@ -16,6 +16,18 @@ def is_empty(row, col):
     return False
 
 
+def create():
+    global mine_field
+    mine_field = [[Consts.EMPTY for i in range(Consts.FIELD_COLS)] for j in
+                  range(Consts.FIELD_ROWS)]
+    mine_field[0][0] = Consts.SOLDIER
+    for row in range(21, 24):
+        for col in range(46, 50):
+            mine_field[row][col] = Consts.FLAG
+    add_mines()
+    print()
+
+
 def random_mine():
     mine_location = []
     for i in range(Consts.MINE_NUM):
@@ -28,23 +40,18 @@ def random_mine():
     return mine_location
 
 
-MINE_LOCATION = random_mine()
-
-
-def create():
-    global mine_field
-    mine_field = [[Consts.EMPTY for i in range(Consts.FIELD_COLS)] for j in
-                  range(Consts.FIELD_ROWS)]
-    mine_field[0][0] = Consts.SOLDIER
-    for row in range(21, 24):
-        for col in range(46, 50):
-            mine_field[row][col] = Consts.FLAG
-    add_mines()
-
-
 def add_mines():
-    for mine in MINE_LOCATION():
+    for mine in random_mine():
         mine_field[mine[0]][mine[1]] = Consts.MINE
+
+
+def find_mines():
+    mine_location = []
+    for row in range(Consts.FIELD_ROWS):
+        for col in Consts.FIELD_COLS:
+            if mine_field[row][col] == Consts.MINE:
+                mine_location.append([row, col])
+    return mine_location
 
 
 def move_soldier(movement):
