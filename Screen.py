@@ -1,26 +1,52 @@
 import pygame
 import Consts
-import random
+import MineField
 
 screen = pygame.display.set_mode(
     (Consts.WINDOW_WIDTH, Consts.WINDOW_HEIGHT))
 
 
 def draw_field():
-    grass = create_grass()
-    loc = Consts.GRASS_LOCATIONS
-    for i in loc:
-        screen.blit(grass,(i[0]*Consts.SQUARE_SIZE,i[1]*Consts.SQUARE_SIZE))
+    draw_grass()
     soldier = create_solider()
-    screen.blit(soldier, (0, 0))
+    soldier_loc = MineField.find_soldier()
+    screen.blit(soldier, (soldier_loc[0] * Consts.SQUARE_SIZE, soldier_loc[1] * Consts.SQUARE_SIZE))
     flag = create_flag()
     screen.blit(flag, (Consts.WINDOW_WIDTH - Consts.FLAG_WIDTH, Consts.WINDOW_HEIGHT - Consts.FLAG_HEIGHT))
     pygame.display.update()
     draw_start_message()
+    pygame.display.flip()
 
 
 def draw_night_field():
-    pass
+    screen.fill(Consts.BLACK)
+    draw_grid()
+    soldier = create_night_solider()
+    soldier_loc = MineField.find_soldier()
+    screen.blit(soldier, (soldier_loc[0] * Consts.SQUARE_SIZE, soldier_loc[1] * Consts.SQUARE_SIZE))
+    mine_loc = MineField.find_mines()
+    mine = create_mine()
+    for i in mine_loc:
+        screen.blit(mine, (i[0] * Consts.SQUARE_SIZE, i[1] * Consts.SQUARE_SIZE))
+
+    pygame.display.flip()
+
+
+def draw_grass():
+    grass = create_grass()
+    loc = Consts.GRASS_LOCATIONS
+    for i in loc:
+        screen.blit(grass, ((i[0]) * Consts.SQUARE_SIZE, (i[1]) * Consts.SQUARE_SIZE))
+
+
+def draw_grid():
+    for i in range(Consts.FIELD_COLS + 1):
+        pygame.draw.line(screen, Consts.GRID_LINE_COLOR, (Consts.SQUARE_SIZE * i, 0),
+                         (Consts.SQUARE_SIZE * i, Consts.WINDOW_HEIGHT), 1)
+    for i in range(Consts.FIELD_ROWS + 1):
+        pygame.draw.line(screen, Consts.GRID_LINE_COLOR, (0, Consts.SQUARE_SIZE * i),
+                         (Consts.WINDOW_WIDTH, Consts.SQUARE_SIZE * i),
+                         1)
 
 
 def create_solider():
@@ -82,6 +108,7 @@ def draw_win_message():
 def draw_game(game_state):
     screen.fill(Consts.BACKGROUND_COLOR)
     draw_field()
+    # draw_night_field()
 
     if game_state["is_enter"]:
         draw_night_field()
