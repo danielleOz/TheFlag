@@ -30,15 +30,15 @@ def create():
 
 
 def add_mines():
+    i = 0
     limit = Consts.MINE_NUM
-    for i in range(limit):
+    while i < limit:
         row = random.randrange(Consts.FIELD_ROWS)
         col = random.randrange(Consts.FIELD_COLS)
 
         if is_empty(row, col):
             insert_mine(row, col)
-        else:
-            limit += 1
+            i += 1
 
 
 def insert_mine(row, col):
@@ -69,13 +69,13 @@ def move_soldier(movement):
     row = soldier_place[0]
     col = soldier_place[1]
     mine_field[row][col] = Consts.EMPTY
-    if movement == Consts.DOWN:
+    if movement == Consts.DOWN and row + 1 < Consts.FIELD_ROWS:
         mine_field[row + 1][col] = Consts.SOLDIER
-    if movement == Consts.UP:
+    if movement == Consts.UP and row - 1 > -1:
         mine_field[row - 1][col] = Consts.SOLDIER
-    if movement == Consts.LEFT:
+    if movement == Consts.LEFT and col - 1 > -1:
         mine_field[row][col - 1] = Consts.SOLDIER
-    if movement == Consts.RIGHT:
+    if movement == Consts.RIGHT and col + 1 < Consts.FIELD_COLS:
         mine_field[row][col + 1] = Consts.SOLDIER
 
 
