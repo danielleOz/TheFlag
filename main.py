@@ -39,6 +39,7 @@ def handle_user_events():
     for event in pygame.event.get():
         if event.type == pygame.QUIT:
             state['scree_open'] = False
+            pygame.quit()
 
         elif state["state"] != Consts.RUNNING_STATE:
             continue
