@@ -48,7 +48,7 @@ def add_mines():
 def find_mines():
     mine_location = []
     for row in range(Consts.FIELD_ROWS):
-        for col in Consts.FIELD_COLS:
+        for col in range(Consts.FIELD_COLS):
             if mine_field[row][col] == Consts.MINE:
                 mine_location.append([row, col])
     return mine_location
