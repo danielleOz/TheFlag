@@ -1,7 +1,7 @@
 import pygame
-
 import Consts
 import MineField
+import Soldier
 
 screen = pygame.display.set_mode(
     (Consts.WINDOW_WIDTH, Consts.WINDOW_HEIGHT))
@@ -10,7 +10,7 @@ screen = pygame.display.set_mode(
 def draw_field():
     draw_grass()
     soldier = create_solider()
-    soldier_loc = MineField.find_soldier()
+    soldier_loc = Soldier.find_soldier()
     screen.blit(soldier, (
         soldier_loc[1] * Consts.SQUARE_SIZE,
         soldier_loc[0] * Consts.SQUARE_SIZE))

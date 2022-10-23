@@ -41,7 +41,7 @@ def handle_user_events():
 
         elif state["state"] != Consts.RUNNING_STATE:
             continue
-            
+
         if event.type == pygame.KEYDOWN:
             if event.key == pygame.K_KP_ENTER:
                 state['is_enter'] = True
