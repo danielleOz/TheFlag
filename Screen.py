@@ -1,9 +1,10 @@
 import pygame
+import main
 import Consts
 import MineField
 
 screen = pygame.display.set_mode(
-        (Consts.WINDOW_WIDTH, Consts.WINDOW_HEIGHT))
+    (Consts.WINDOW_WIDTH, Consts.WINDOW_HEIGHT))
 
 
 def draw_field():
@@ -27,15 +28,16 @@ def draw_night_field():
     soldier = create_night_solider()
     soldier_loc = MineField.find_soldier()
     screen.blit(soldier, (
-        soldier_loc[0] * Consts.SQUARE_SIZE,
-        soldier_loc[1] * Consts.SQUARE_SIZE))
+        soldier_loc[1] * Consts.SQUARE_SIZE,
+        soldier_loc[0] * Consts.SQUARE_SIZE))
     mine_loc = MineField.find_mines()
     mine = create_mine()
     for i in mine_loc:
         screen.blit(mine,
-                    (i[0] * Consts.SQUARE_SIZE, i[1] * Consts.SQUARE_SIZE))
+                    (i[1] * Consts.SQUARE_SIZE, i[0] * Consts.SQUARE_SIZE))
 
     pygame.display.flip()
+    main.state["is_enter"] = False
 
 
 def draw_grass():
@@ -116,9 +118,11 @@ def draw_win_message():
 
 def draw_game(game_state):
     screen.fill(Consts.BACKGROUND_COLOR)
-    draw_field()
+    # draw_field()
     # draw_night_field()
 
+    if not game_state["is_enter"]:
+        draw_field()
     if game_state["is_enter"]:
         draw_night_field()
 
