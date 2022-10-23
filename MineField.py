@@ -9,11 +9,12 @@ def is_empty(row, col):
         for c in range(2):
             if row == r and col == c:
                 return False
-
-    if mine_field[row][col] == Consts.EMPTY:
-        return True
-
-    return False
+    if col + 2 >= Consts.FIELD_COLS:
+        return False
+    for i in range(3):
+        if mine_field[row][col + i] != Consts.EMPTY:
+            return False
+    return True
 
 
 def create():
@@ -28,21 +29,30 @@ def create():
     print()
 
 
-def random_mine():
-    mine_location = []
-    for i in range(Consts.MINE_NUM):
+def add_mines():
+    limit = Consts.MINE_NUM
+    for i in range(limit):
         row = random.randrange(Consts.FIELD_ROWS)
         col = random.randrange(Consts.FIELD_COLS)
+
         if is_empty(row, col):
-            mine_location.append([row, col])
+            insert_mine(row, col)
         else:
-            i -= 1
-    return mine_location
+            limit += 1
 
 
-def add_mines():
-    for mine in random_mine():
-        mine_field[mine[0]][mine[1]] = Consts.MINE
+def insert_mine(row, col):
+    for i in range(3):
+        mine_field[row][col + i] = Consts.MINE
+
+
+def count_mines():
+    count = 0
+    for row in mine_field:
+        for item in row:
+            if item == Consts.MINE:
+                count += 1
+    return count
 
 
 def find_mines():
