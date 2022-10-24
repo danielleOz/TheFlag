@@ -46,9 +46,6 @@ def handle_user_events():
             continue
 
         if not state['is_enter']:
-            space_start = 0
-            space_end = 0
-            time.time()
 
             if event.type == pygame.KEYDOWN:
                 state['is_message'] = False
@@ -64,17 +61,15 @@ def handle_user_events():
                     Soldier.move_soldier(Consts.RIGHT)
                 for i in range(1, 10):
                     if pygame.key.name(event.key) == str(i):
-                        space_start = datetime.now()
+                        global start
+                        start = datetime.datetime.now()
 
             if event.type == pygame.KEYUP:
                 for i in range(1, 10):
                     if pygame.key.name(event.key) == str(i):
-                        space_end = time.time()
-                        t = round((space_end - space_start), 2)
-                        print(space_start)
-                        print(space_end)
-                        print(t)
-                        if space_end - space_start < 10000000:
+                        end = datetime.datetime.now()
+                        t = end - start
+                        if t.seconds < 1:
                             print("save")
                         else:
                             print('upload')
