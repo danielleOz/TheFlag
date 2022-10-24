@@ -21,8 +21,8 @@ def draw_field(game_state):
                        Consts.WINDOW_HEIGHT - Consts.FLAG_HEIGHT))
     pygame.display.update()
     if game_state['is_message']:
-        draw_start_message(Consts.TEXT_TEXT1)
-        draw_start_message(Consts.TEXT_TEXT2)
+        draw_start_message(Consts.TEXT_TEXT1,Consts.TEXT1_LOCATION)
+        draw_start_message(Consts.TEXT_TEXT2,Consts.TEXT2_LOCATION)
 
     pygame.display.flip()
 
@@ -106,9 +106,9 @@ def draw_message(message, font_size, color, location):
     screen.blit(text_img, location)
 
 
-def draw_start_message(text):
+def draw_start_message(text,location):
     draw_message(text, Consts.TEXT_FONT_SIZE,
-                 Consts.TEXT_COLOR, Consts.TEXT_LOCATION)
+                 Consts.TEXT_COLOR, location)
 
 
 
