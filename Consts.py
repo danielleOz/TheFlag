@@ -28,8 +28,9 @@ WIN_LOCATION = \
     (0.2 * WINDOW_WIDTH, WINDOW_HEIGHT / 2 - (WIN_FONT_SIZE / 2))
 FONT_NAME = "ariel"
 TEXT_COLOR = (255, 255, 255)
-TEXT_TEXT = f"Welcome to The Flag game. \n Have Fun!"
-TEXT_FONT_SIZE = 20
+TEXT_TEXT1 = "Welcome to The Flag game."
+TEXT_TEXT2 = "Have Fun!"
+TEXT_FONT_SIZE = 30
 TEXT_LOCATION = (20, 10)
 
 SOLDIER_IMG = "soldier.png"
