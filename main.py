@@ -3,6 +3,7 @@ import MineField
 import Screen
 import Consts
 import Soldier
+import keyboard
 
 state = {
     "screen_open": True,
@@ -62,8 +63,7 @@ def handle_user_events():
                     Soldier.move_soldier(Consts.RIGHT)
 
                 for i in range(1, 10):
-                    txt = 'pygame.K_' + str(i)
-                    if event.key == pygame.txt:
+                    if keyboard.is_pressed(str(i)):
                         print(i)
 
 
