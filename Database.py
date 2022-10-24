@@ -12,9 +12,6 @@ def create_csv():
 
 
 def add_to_csv(index, mine_filed, solider):
-    # added_data = {'BGFX': ["89"]}
-    # df = pandas.DataFrame(added_data)
-    # df.to_csv('data.csv', mode='a',index=index)
     df = pandas.read_csv('data.csv')
     df.loc[index,'mine'] = mine_filed
     df.loc[index, 'solider'] = mine_filed
