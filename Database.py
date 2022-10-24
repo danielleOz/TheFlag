@@ -14,7 +14,7 @@ def create_csv():
 def add_to_csv(index, mine_filed, solider):
     df = pandas.read_csv('data.csv')
     df.loc[index,'mine'] = mine_filed
-    df.loc[index, 'solider'] = mine_filed
+    df.loc[index, 'solider'] = solider
     df.to_csv('data.csv')
 
 
