@@ -7,7 +7,7 @@ from csv import writer
 def create_csv():
     saved_data = {
         'mine_field': ["hi"],
-        'solider': ["bye"],
+        'solider': ["byse"],
     }
     df = pandas.DataFrame(saved_data)
     df.to_csv('data.csv')
