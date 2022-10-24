@@ -49,6 +49,8 @@ def handle_user_events():
                 state['is_message'] = False
                 if event.key == pygame.K_RETURN:
                     state['is_enter'] = True
+                if event.key == pygame.K_1:
+                    space_start = pygame.time.get_ticks()
 
                 if event.key == pygame.K_UP:
                     Soldier.move_soldier(Consts.UP)
