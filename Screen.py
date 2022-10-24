@@ -8,6 +8,7 @@ screen = pygame.display.set_mode(
 
 
 def draw_field(game_state):
+    screen.fill(Consts.BACKGROUND_COLOR)
     draw_grass()
     soldier = create_solider()
     soldier_loc = Soldier.find_soldier()
@@ -117,9 +118,6 @@ def draw_win_message():
 
 
 def draw_game(game_state):
-    screen.fill(Consts.BACKGROUND_COLOR)
-    # draw_field()
-    # draw_night_field()
 
     if not game_state["is_enter"]:
         draw_field(game_state)
