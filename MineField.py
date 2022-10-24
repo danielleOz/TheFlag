@@ -57,3 +57,9 @@ def find_mines():
             else:
                 col += 1
     return mine_location
+
+
+def change_mine_field(new_field):
+    for row in range(Consts.FIELD_ROWS):
+        for col in range(Consts.FIELD_COLS):
+            mine_field[row][col] = new_field[row][col]
