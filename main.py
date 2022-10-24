@@ -18,6 +18,7 @@ state = {
 def main():
     pygame.init()
     MineField.create()
+    Database.create_csv()
 
     while state["screen_open"]:
 
