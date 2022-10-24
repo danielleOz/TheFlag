@@ -28,3 +28,5 @@ def read_cvs_index(index):
 add_to_csv(1, MineField.mine_field, Soldier.soldier_field)
 read_cvs_index(1)
 read_cvs_index(0)
+
+
