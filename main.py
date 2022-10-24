@@ -4,6 +4,7 @@ import Screen
 import Consts
 import Soldier
 import time
+import datetime
 
 state = {
     "screen_open": True,
@@ -45,9 +46,11 @@ def handle_user_events():
             continue
 
         if not state['is_enter']:
+            space_start = 0
+            space_end = 0
+            time.time()
 
             if event.type == pygame.KEYDOWN:
-                print(pygame.key.name(event.key))
                 state['is_message'] = False
                 if event.key == pygame.K_RETURN:
                     state['is_enter'] = True
@@ -59,31 +62,22 @@ def handle_user_events():
                     Soldier.move_soldier(Consts.LEFT)
                 if event.key == pygame.K_RIGHT:
                     Soldier.move_soldier(Consts.RIGHT)
-                for i in range(1,10):
-                    if pygame.key.name(event.key) == i:
-                        print(i)
-                        space_start = time.time()
-                        print(space_start)
-            if event.type == pygame.KEYUP:
-                print('yes')
-                for i in range(1,10):
-                    if pygame.key.name(event.key) == i:
-                        space_end = time.time()
-                        print(space_end)
-                        if space_end - space_start >= 2000:
-                            print("good")
+                for i in range(1, 10):
+                    if pygame.key.name(event.key) == str(i):
+                        space_start = datetime.now()
 
-            #     for i in range(1, 10):
-            #         if keyboard.is_pressed(str(i)):
-            #             print(i)
-            #             space_start = pygame.time.get_ticks()
-            # if event.type == pygame.KEYUP:
-            #     for i in range(1, 10):
-            #         if keyboard.release(str(i)):
-            #             print("g")
-            #             space_end = pygame.time.get_ticks()
-            #             if space_end - space_start >= 2000:
-            #                 print("good")
+            if event.type == pygame.KEYUP:
+                for i in range(1, 10):
+                    if pygame.key.name(event.key) == str(i):
+                        space_end = time.time()
+                        t = round((space_end - space_start), 2)
+                        print(space_start)
+                        print(space_end)
+                        print(t)
+                        if space_end - space_start < 10000000:
+                            print("save")
+                        else:
+                            print('upload')
 
             Screen.draw_game(state)
 
