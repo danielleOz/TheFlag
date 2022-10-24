@@ -3,8 +3,8 @@ import MineField
 import Screen
 import Consts
 import Soldier
-import time
 import datetime
+import Database
 
 state = {
     "screen_open": True,
@@ -70,7 +70,8 @@ def handle_user_events():
                         end = datetime.datetime.now()
                         t = end - start
                         if t.seconds < 1:
-                            print("save")
+                            print('save')
+                            Database.add_to_csv(i, MineField.mine_field, Soldier.soldier_field)
                         else:
                             print('upload')
 
