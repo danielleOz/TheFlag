@@ -35,29 +35,27 @@ def main():
         Screen.draw_game(state)
 
 
-
 def handle_user_events():
     for event in pygame.event.get():
         if event.type == pygame.QUIT:
-            state['scree_open'] = False
-            pygame.quit()
+            state['screen_open'] = False
 
-        elif state["state"] != Consts.RUNNING_STATE:
-            continue
+        if state['screen_open'] and not state['is_enter']:
 
-        if event.type == pygame.KEYDOWN:
-            if event.key == pygame.K_KP_ENTER:
-                state['is_enter'] = True
-            if event.key == pygame.K_UP:
-                Soldier.move_soldier(Consts.UP)
-            if event.key == pygame.K_DOWN:
-                Soldier.move_soldier(Consts.DOWN)
-            if event.key == pygame.K_LEFT:
-                Soldier.move_soldier(Consts.LEFT)
-            if event.key == pygame.K_RIGHT:
-                Soldier.move_soldier(Consts.RIGHT)
+            if event.type == pygame.KEYDOWN:
+                if event.key == pygame.K_RETURN:
+                    state['is_enter'] = True
 
-        Screen.draw_game(state)
+                if event.key == pygame.K_UP:
+                    Soldier.move_soldier(Consts.UP)
+                if event.key == pygame.K_DOWN:
+                    Soldier.move_soldier(Consts.DOWN)
+                if event.key == pygame.K_LEFT:
+                    Soldier.move_soldier(Consts.LEFT)
+                if event.key == pygame.K_RIGHT:
+                    Soldier.move_soldier(Consts.RIGHT)
+
+            Screen.draw_game(state)
 
 
 def is_lose():  # אם רגלי החייל נוגעות במקש
