@@ -51,6 +51,7 @@ def handle_user_events():
                     state['is_enter'] = True
                 if event.key == pygame.K_1:
                     space_start = pygame.time.get_ticks()
+                    print(1)
                 if event.key == pygame.K_UP:
                     Soldier.move_soldier(Consts.UP)
                 if event.key == pygame.K_DOWN:
@@ -62,7 +63,7 @@ def handle_user_events():
 
                 for i in range(1, 10):
                     txt = 'pygame.K_' + str(i)
-                    if event.key == txt:
+                    if event.key == pygame.txt:
                         print(i)
 
 
