@@ -5,20 +5,18 @@ from csv import writer
 
 
 def create_csv():
-    saved_data = {
-        'mine_field': ["hi"],
-        'solider': ["bye"],
-    }
+    saved_data = {'RRF': ['OOF']}
     df = pandas.DataFrame(saved_data)
     df.to_csv('data.csv')
 
 
+create_csv()
+
+
 def add_to_csv(index, mine_filed, solider):
-    List = [mine_filed,solider]
-    with open('data.csv', 'a') as f_object:
-        writer_object = writer(f_object)
-        writer_object.writerow(List)
-        f_object.close()
+    added_data = {'BGFX': ['HU']}
+    df = pandas.DataFrame(added_data)
+    df.to_csv('data.csv', mode='a', index=index, header=False)
 
 
 def read_cvs_index(index):
@@ -27,5 +25,6 @@ def read_cvs_index(index):
 
 
 # create_csv()
-add_to_csv(1,MineField.mine_field,Soldier.soldier_field)
+add_to_csv(1, MineField.mine_field, Soldier.soldier_field)
+read_cvs_index(1)
 read_cvs_index(0)
