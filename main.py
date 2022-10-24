@@ -16,7 +16,6 @@ state = {
 def main():
     pygame.init()
     MineField.create()
-    MineField.count_mines()
 
     while state["screen_open"]:
 

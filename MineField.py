@@ -46,15 +46,6 @@ def insert_mine(row, col):
         mine_field[row][col + i] = Consts.MINE
 
 
-def count_mines():
-    count = 0
-    for row in mine_field:
-        for item in row:
-            if item == Consts.MINE:
-                count += 1
-    return count
-
-
 def find_mines():
     mine_location = []
     for row in range(Consts.FIELD_ROWS):
