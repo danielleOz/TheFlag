@@ -50,9 +50,6 @@ def handle_user_events():
                 state['is_message'] = False
                 if event.key == pygame.K_RETURN:
                     state['is_enter'] = True
-                if event.key == pygame.K_1:
-                    space_start = pygame.time.get_ticks()
-                    print(1)
                 if event.key == pygame.K_UP:
                     Soldier.move_soldier(Consts.UP)
                 if event.key == pygame.K_DOWN:
@@ -61,11 +58,13 @@ def handle_user_events():
                     Soldier.move_soldier(Consts.LEFT)
                 if event.key == pygame.K_RIGHT:
                     Soldier.move_soldier(Consts.RIGHT)
-
                 for i in range(1, 10):
                     if keyboard.is_pressed(str(i)):
-                        print(i)
-
+                        space_start = pygame.time.get_ticks()
+                        if event.type == pygame.KEYUP:
+                            space_end = pygame.time.get_ticks()
+                            if space_end - space_start >= 2000:
+                                print("good")
 
             Screen.draw_game(state)
 
