@@ -2,6 +2,7 @@ import pandas
 import MineField
 import Soldier
 from csv import writer
+import ast
 import Consts
 
 mine = [[Consts.EMPTY for i in range(Consts.FIELD_COLS)] for j in
@@ -25,6 +26,7 @@ def add_to_csv(index, mine_filed, solider):
 def read_cvs_index(index):
     df = pandas.read_csv('data.csv')
     return df.loc[index]
+
 
 
 

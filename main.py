@@ -72,11 +72,11 @@ def handle_user_events():
                         t = end - start
                         if t.seconds < 1:
                             print('save')
-                            Database.add_to_csv(i, MineField.mine_field, Soldier.soldier_field)
+                            # Database.add_to_csv(i, MineField.mine_field, Soldier.soldier_field)
                         else:
                             print('upload')
-                            MineField.change_mine_field(Database.read_cvs_index(i)['mine'])
-                            Soldier.change_soldier_field(Database.read_cvs_index(i)['soldier'])
+                            # MineField.change_mine_field(Database.read_cvs_index(i)['mine'])
+                            # Soldier.change_soldier_field(Database.read_cvs_index(i)['soldier'])
 
             Screen.draw_game(state)
 
