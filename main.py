@@ -41,9 +41,13 @@ def handle_user_events():
         if event.type == pygame.QUIT:
             state['screen_open'] = False
 
-        if state['screen_open'] and not state['is_enter']:
+        elif state["state"] != Consts.RUNNING_STATE:
+            continue
+
+        if not state['is_enter']:
 
             if event.type == pygame.KEYDOWN:
+                state['is_message'] = False
                 if event.key == pygame.K_RETURN:
                     state['is_enter'] = True
 
