@@ -19,12 +19,12 @@ def draw_field(game_state):
     flag = create_flag()
     screen.blit(flag, (Consts.WINDOW_WIDTH - Consts.FLAG_WIDTH,
                        Consts.WINDOW_HEIGHT - Consts.FLAG_HEIGHT))
-    pygame.display.update()
+    # pygame.display.update()
     if game_state['is_message']:
         draw_start_message(Consts.TEXT_TEXT1,Consts.TEXT1_LOCATION)
         draw_start_message(Consts.TEXT_TEXT2,Consts.TEXT2_LOCATION)
 
-    pygame.display.flip()
+    # pygame.display.flip()
 
 
 def draw_night_field(game_state):
