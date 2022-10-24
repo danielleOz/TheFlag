@@ -3,6 +3,7 @@ import Soldier
 import Consts
 import MineField
 
+
 screen = pygame.display.set_mode(
     (Consts.WINDOW_WIDTH, Consts.WINDOW_HEIGHT))
 
@@ -19,7 +20,8 @@ def draw_field(game_state):
     screen.blit(flag, (Consts.WINDOW_WIDTH - Consts.FLAG_WIDTH,
                        Consts.WINDOW_HEIGHT - Consts.FLAG_HEIGHT))
     pygame.display.update()
-    draw_start_message()
+    if game_state['is_message']:
+        draw_start_message(game_state)
     pygame.display.flip()
 
 
@@ -102,9 +104,10 @@ def draw_message(message, font_size, color, location):
     screen.blit(text_img, location)
 
 
-def draw_start_message():
+def draw_start_message(game_state):
     draw_message(Consts.TEXT_TEXT, Consts.TEXT_FONT_SIZE,
                  Consts.TEXT_COLOR, Consts.TEXT_LOCATION)
+    game_state['is_message'] = False
 
 
 def draw_lose_message():

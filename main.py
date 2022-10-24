@@ -8,7 +8,8 @@ state = {
     "screen_open": True,
     "is_enter": False,
     "is_moving": False,
-    "state": Consts.RUNNING_STATE
+    "state": Consts.RUNNING_STATE,
+    "is_message": True
 }
 
 
