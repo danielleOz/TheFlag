@@ -3,7 +3,7 @@ import MineField
 import Screen
 import Consts
 import Soldier
-import keyboard
+import time
 
 state = {
     "screen_open": True,
@@ -47,6 +47,7 @@ def handle_user_events():
         if not state['is_enter']:
 
             if event.type == pygame.KEYDOWN:
+                print(pygame.key.name(event.key))
                 state['is_message'] = False
                 if event.key == pygame.K_RETURN:
                     state['is_enter'] = True
@@ -58,13 +59,31 @@ def handle_user_events():
                     Soldier.move_soldier(Consts.LEFT)
                 if event.key == pygame.K_RIGHT:
                     Soldier.move_soldier(Consts.RIGHT)
-                for i in range(1, 10):
-                    if keyboard.is_pressed(str(i)):
-                        space_start = pygame.time.get_ticks()
-                        if event.type == pygame.KEYUP:
-                            space_end = pygame.time.get_ticks()
-                            if space_end - space_start >= 2000:
-                                print("good")
+                for i in range(1,10):
+                    if pygame.key.name(event.key) == i:
+                        print(i)
+                        space_start = time.time()
+                        print(space_start)
+            if event.type == pygame.KEYUP:
+                print('yes')
+                for i in range(1,10):
+                    if pygame.key.name(event.key) == i:
+                        space_end = time.time()
+                        print(space_end)
+                        if space_end - space_start >= 2000:
+                            print("good")
+
+            #     for i in range(1, 10):
+            #         if keyboard.is_pressed(str(i)):
+            #             print(i)
+            #             space_start = pygame.time.get_ticks()
+            # if event.type == pygame.KEYUP:
+            #     for i in range(1, 10):
+            #         if keyboard.release(str(i)):
+            #             print("g")
+            #             space_end = pygame.time.get_ticks()
+            #             if space_end - space_start >= 2000:
+            #                 print("good")
 
             Screen.draw_game(state)
 
