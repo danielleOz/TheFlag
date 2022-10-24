@@ -32,3 +32,7 @@ def move_soldier(movement):
         soldier_field[row][col] = Consts.EMPTY
 
 
+def change_soldier_field(new_field):
+    for row in range(Consts.FIELD_ROWS):
+        for col in range(Consts.FIELD_COLS):
+            soldier_field[row][col] = new_field[row][col]

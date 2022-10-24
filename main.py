@@ -74,6 +74,8 @@ def handle_user_events():
                             Database.add_to_csv(i, MineField.mine_field, Soldier.soldier_field)
                         else:
                             print('upload')
+                            MineField.change_mine_field(Database.read_cvs_index(i)['mine'])
+                            Soldier.change_soldier_field(Database.read_cvs_index(i)['soldier'])
 
             Screen.draw_game(state)
 
