@@ -1,9 +1,31 @@
 import pandas
 import MineField
 import Soldier
+from csv import writer
 
-# saved_data = {
-#     'mine_field':[,"PySpark","Hadoop","Python"],
-#     'solider' :[22000,25000,np.nan,24000],
-#           }
-# df = pd.DataFrame(technologies)
+
+def create_csv():
+    saved_data = {
+        'mine_field': ["hi"],
+        'solider': ["bye"],
+    }
+    df = pandas.DataFrame(saved_data)
+    df.to_csv('data.csv')
+
+
+def add_to_csv(index, mine_filed, solider):
+    List = [mine_filed,solider]
+    with open('data.csv', 'a') as f_object:
+        writer_object = writer(f_object)
+        writer_object.writerow(List)
+        f_object.close()
+
+
+def read_cvs_index(index):
+    df = pandas.read_csv('data.csv')
+    print(df.loc[index])
+
+
+# create_csv()
+add_to_csv(1,MineField.mine_field,Soldier.soldier_field)
+read_cvs_index(0)
